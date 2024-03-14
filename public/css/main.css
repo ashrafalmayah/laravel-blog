@@ -35,8 +35,6 @@ body{
 }
 
 .post-item a{
-    font-size: 2rem;
-    font-weight: bold;
     color: unset;
     text-decoration: none;
 }
@@ -51,4 +49,8 @@ body{
     border-top: solid 1px;
     margin-top: 3rem;
     padding-top: 3rem;
+}
+
+.category-list a{
+    color: #1c34bc;
 }
