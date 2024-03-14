@@ -43,6 +43,8 @@ body{
 
 .post-item p {
     margin-bottom: 1rem;
+    line-height: 2rem;
+
 }
 
 .post-item + .post-item{
