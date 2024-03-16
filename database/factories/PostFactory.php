@@ -21,10 +21,11 @@ class PostFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'category_id' => Category::inRandomOrder()->first()->id,
-            'title' => $this->faker->sentence(3),
-            'slug' => $this->faker->slug,
-            'excerpt' => $this->faker->sentence,
-            'body' => implode("\n\n", $this->faker->paragraphs(5))
+            'title' => fake()->sentence(3),
+            'slug' => fake()->unique()->slug(3),
+            'excerpt' => fake()->sentence(),
+            'body' => implode("\n\n", fake()->paragraphs(5)),
+            'published_at' => fake()->dateTime()
         ];
     }
 }
