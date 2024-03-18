@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     return view('posts', [
-        'posts' => Post::latest('published_at')->get()
+        'posts' => Post::latest('published_at')->get(),
+        'categories' => Category::all()
     ]);
 });
 
@@ -33,13 +34,16 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 Route::get('categories/{category:slug}', function (Category $category) {
 
     return view('posts', [
-        'posts' => $category->posts->sortByDesc('published_at')
+        'posts' => $category->posts->sortByDesc('published_at'),
+        'currentCategory' => $category,
+        'categories' => Category::all()
     ]);
 });
 
 Route::get('authors/{author:username}', function (User $author) {
 
     return view('posts', [
-        'posts' => $author->posts->sortByDesc('published_at')
+        'posts' => $author->posts->sortByDesc('published_at'),
+        'categories' => Category::all()
     ]);
 });
