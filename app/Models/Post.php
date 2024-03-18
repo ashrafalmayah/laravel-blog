@@ -11,6 +11,10 @@ class Post extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     protected $with = [
         'category',
         'author'
