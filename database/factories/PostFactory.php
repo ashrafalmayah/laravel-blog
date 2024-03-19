@@ -23,9 +23,9 @@ class PostFactory extends Factory
             'category_id' => Category::inRandomOrder()->first()->id,
             'title' => fake()->sentence(3),
             'slug' => fake()->unique()->slug(3),
-            'excerpt' => fake()->sentence(),
-            'body' => implode("\n\n", fake()->paragraphs(5)),
-            'published_at' => fake()->dateTime()
+            'excerpt' => '<p>' . implode("</p><p>", fake()->paragraphs(2)) . '</p>',
+            'body' => '<p>' . implode("</p><p>", fake()->paragraphs(6)) . '</p>',
+            'published_at' => fake()->dateTimeBetween('-2 years', 'now')
         ];
     }
 }
