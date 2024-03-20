@@ -5,11 +5,12 @@
             <x-icon name='down-arrow' class="absolute" style="right: 12px;" />
         </button>
     </x-slot>
-    <x-dropdown-item :active="!request('category')" href="/">
+    <x-dropdown-item :active="!request('category')" href="/?{{ http_build_query(request()->except('category')) }}">
         All
     </x-dropdown-item>
     @foreach ($categories as $category)
-        <x-dropdown-item :active="request('category') == $category->slug" href="/?category={{ $category->slug }}">
+        <x-dropdown-item :active="request('category') == $category->slug"
+            href="/?category={{ $category->slug }}&{{ http_build_query(request()->except('category')) }}">
             {{ ucwords($category->name) }}
         </x-dropdown-item>
     @endforeach
