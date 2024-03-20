@@ -12,13 +12,13 @@
                     <x-icon name='down-arrow' class="absolute" style="right: 12px;" />
                 </button>
             </x-slot>
-            <x-dropdown-item :active="request()->routeIs('home')" href="/">
+            <x-dropdown-item :active="!request('category')" href="/">
                 All
             </x-dropdown-item>
             @foreach ($categories as $category)
-                <x-dropdown-item :active="request()->is('categories/' . $category->slug)" href="/categories/{{ $category->slug }}">
+                <x-dropdown-item :active="request('category') == $category->slug" href="/?category={{ $category->slug }}">
                     {{ ucwords($category->name) }}
-                </x-dropdown-item>
+                </x-dropdown-item>`
             @endforeach
         </x-dropdown>
 
