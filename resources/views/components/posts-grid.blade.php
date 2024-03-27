@@ -10,6 +10,7 @@
             @endforeach
         </div>
     @endif
+    {{ $posts->links() }}
 @else
     <h2 class="text-center">There are no posts yet. Please come later</h2>
 @endif
