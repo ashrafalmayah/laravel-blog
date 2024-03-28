@@ -2,7 +2,7 @@
 
 <article class="flex space-x-4 rounded-lg border border-gray-200 bg-gray-100 p-6">
     <div class="flex-shrink-0">
-        <img class="rounded-full" src="https://i.pravatar.cc/60?u={{ $comment->id }}" width="60" height="60"
+        <img class="rounded-full" src="https://i.pravatar.cc/60?u={{ $comment->author->username }}" width="60" height="60"
             alt="profile">
     </div>
     <div class="space-y-4">
