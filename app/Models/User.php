@@ -44,7 +44,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function posts(){
+    //Another way to hash passwords
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes["password"] = bcrypt($password);
+    }
+
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 }
