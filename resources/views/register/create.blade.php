@@ -5,19 +5,34 @@
             @csrf
             <div class="mb-4 px-8">
                 <label class="my-2 block text-lg" for="name">Name</label>
-                <input class="block w-full rounded-md px-4 py-2" type="text" name="name" id="name">
+                <input class="block w-full rounded-md px-4 py-2" type="text" name="name" id="name"
+                    value="{{ old('name') }}">
+                @error('name')
+                    <span class="text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
             <div class="mb-4 px-8">
                 <label class="my-2 block text-lg" for="username">Username</label>
-                <input class="block w-full rounded-md px-4 py-2" type="text" name="username" id="username">
+                <input class="block w-full rounded-md px-4 py-2" type="text" name="username" id="username"
+                    value="{{ old('username') }}">
+                @error('username')
+                    <span class="text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
             <div class="mb-4 px-8">
                 <label class="my-2 block text-lg" for="email">Email</label>
-                <input class="block w-full rounded-md px-4 py-2" type="email" name="email" id="email">
+                <input class="block w-full rounded-md px-4 py-2" type="email" name="email" id="email"
+                    value="{{ old('email') }}">
+                @error('email')
+                    <span class="text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
             <div class="mb-4 px-8">
                 <label class="my-2 block text-lg" for="password">Password</label>
                 <input class="block w-full rounded-md px-4 py-2" type="password" name="password" id="password">
+                @error('password')
+                    <span class="text-xs text-red-500">{{ $message }}</span>
+                @enderror
             </div>
             <div class="mb-4 px-8 text-center">
                 <button class="rounded-lg bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600"
