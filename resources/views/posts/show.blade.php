@@ -45,6 +45,12 @@
 
                 <div class="space-y-4 leading-loose lg:text-lg">{!! $post->body !!}</div>
             </div>
+
+            <section class="col-span-8 col-start-5 mt-10 space-y-8">
+                @foreach ($post->comments as $comment)
+                    <x-post-comment :comment="$comment" />
+                @endforeach
+            </section>
         </article>
     </main>
 </x-layout>
