@@ -9,6 +9,13 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'post_id',
+        'user_id',
+        'body',
+        'published_at'
+    ];
+
     protected $casts = [
         'published_at' => 'datetime'
     ];
