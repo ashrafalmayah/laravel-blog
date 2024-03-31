@@ -25,9 +25,9 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->where('post', '[A-z_\-0-9]+');
 Route::post('/posts/{post:slug}/comments', [PostCommentsController::class, 'store'])->middleware('auth');
 
-Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest')->name('login');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');

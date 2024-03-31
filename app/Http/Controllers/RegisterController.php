@@ -10,6 +10,10 @@ class RegisterController extends Controller
 {
     public function create()
     {
+        if (url()->previous() != url()->current() && url()->previous() != request()->getUriForPath('/login')) {
+            redirect()->setIntendedUrl(url()->previous());
+        }
+
         return view('register.create');
     }
 
@@ -23,7 +27,6 @@ class RegisterController extends Controller
         ]));
 
         auth()->login($user);
-
-        return redirect('/')->with('success', 'Your account has been created!');
+        return redirect()->intended()->with('success', 'Your account has been created!');
     }
 }

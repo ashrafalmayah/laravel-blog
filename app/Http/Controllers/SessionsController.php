@@ -8,6 +8,11 @@ class SessionsController extends Controller
 {
     public function create()
     {
+
+        if (url()->previous() != url()->current() && url()->previous() != request()->getUriForPath('/register')) {
+            redirect()->setIntendedUrl(url()->previous());
+        }
+
         return view('sessions.create');
     }
 
@@ -26,13 +31,13 @@ class SessionsController extends Controller
 
         session()->regenerate();
 
-        return redirect('/')->with('success', 'Welcome Back!');
+        return redirect()->intended()->with('success', 'Welcome Back!');
     }
 
     public function destroy()
     {
         auth()->logout();
 
-        return redirect('/')->with('success', 'Goodbye!');
+        return back()->with('success', 'Goodbye!');
     }
 }
