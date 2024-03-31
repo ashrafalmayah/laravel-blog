@@ -18,7 +18,7 @@
             <a href="/login" class="ml-6 text-sm font-bold uppercase transition hover:text-blue-500">Log In</a>
         @endauth
 
-        <a href="#"
+        <a href="#newsletter"
             class="ml-6 rounded-full bg-blue-500 px-5 py-3 text-xs font-semibold uppercase text-white transition hover:bg-blue-600">
             Subscribe for Updates
         </a>
