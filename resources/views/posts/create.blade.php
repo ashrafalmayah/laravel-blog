@@ -1,6 +1,5 @@
 <x-layout>
-    <x-panel class="mx-auto mt-10 max-w-3xl bg-gray-100 lg:mt-20">
-        <h1 class="mt-6 text-center text-4xl font-bold text-gray-900">Create a Post</h1>
+    <x-setting heading="New Post">
         <form method="POST" action="/admin/posts" enctype="multipart/form-data">
             @csrf
 
@@ -24,5 +23,5 @@
 
             <x-form.button>Publish</x-form.button>
         </form>
-    </x-panel>
+    </x-setting>
 </x-layout>

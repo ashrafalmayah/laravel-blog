@@ -1,4 +1,4 @@
-<x-dropdown>
+<x-dropdown class="bg-gray-100">
     <x-slot name="trigger">
         <button class="min-w-40 relative inline-flex w-full flex-1 py-2 pl-3 pr-9 text-sm font-semibold">
             {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories' }}
