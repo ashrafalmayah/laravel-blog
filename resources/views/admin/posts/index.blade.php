@@ -1,7 +1,7 @@
 <x-layout>
     <x-setting heading="Manage Posts">
         <div class="overflow-x-auto">
-            <table class="min-w-full table-fixed divide-y divide-gray-200">
+            <table class="min-w-full mb-4 table-fixed divide-y divide-gray-200">
                 <tbody class="divide-y divide-gray-200 bg-white">
                     @foreach ($posts as $post)
                         <tr class="hover:bg-gray-100">
@@ -27,6 +27,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $posts->links() }}
         </div>
     </x-setting>
 </x-layout>

@@ -10,8 +10,9 @@ class AdminPostController extends Controller
     public function index()
     {
         return view('admin.posts.index', [
-            'posts' => auth()->user()->posts->sortByDesc('published_at'),
-        ]);
+            'posts' => Post::latest('published_at')
+                ->paginate(6),
+            ]);
     }
 
     public function create()
