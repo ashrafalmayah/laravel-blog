@@ -12,7 +12,7 @@ class AdminPostController extends Controller
         return view('admin.posts.index', [
             'posts' => Post::latest('published_at')
                 ->paginate(6),
-            ]);
+        ]);
     }
 
     public function create()
@@ -22,14 +22,7 @@ class AdminPostController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
-            'title' => 'required',
-            'slug' => ['required', Rule::unique('posts', 'slug')],
-            'thumbnail' => ['required', 'image'],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')],
-        ]);
+        $attributes = $this->validatePost();
 
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         $attributes['published_at'] = now();
@@ -49,14 +42,7 @@ class AdminPostController extends Controller
 
     public function update(Post $post)
     {
-        $attributes = request()->validate([
-            'title' => 'required',
-            'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
-            'thumbnail' => ['image'],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')],
-        ]);
+        $attributes = $this->validatePost($post);
 
         if (isset($attributes['thumbnail'])) {
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
@@ -67,9 +53,24 @@ class AdminPostController extends Controller
         return back()->with('success', 'Post updated successfully');
     }
 
-    public function destroy(Post $post){
+    public function destroy(Post $post)
+    {
         $post->delete();
 
         return back()->with('success', 'Post Deleted successfully');
+    }
+
+    protected function validatePost(Post $post = null)
+    {
+        $post ??= new Post();
+
+        return request()->validate([
+            'title' => 'required',
+            'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
+            'thumbnail' => $post->exists ? 'image' : ['required', 'image'],
+            'excerpt' => 'required',
+            'body' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+        ]);
     }
 }
