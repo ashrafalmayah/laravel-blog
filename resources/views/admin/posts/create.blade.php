@@ -13,7 +13,7 @@
                 <x-form.label name="category_id">category</x-form.label>
                 <select class="block w-full rounded-md px-4 py-2" name="category_id" id="category_id">
                     @foreach (\App\Models\Category::get() as $category)
-                        <option value="{{ $category->id }} {{ $category->id == old('category_id') ? 'selected' : '' }}">
+                        <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>
                             {{ ucwords($category->name) }}
                         </option>
                     @endforeach
